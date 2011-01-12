@@ -122,7 +122,7 @@ alias hgst='vcst hg'
 
 #start/stop dev vm (fusion)
 # vr() {
-#     DEVVM='/Users/nilcolor/Documents/Virtual Machines/Ubuntu 9.10 server.vmwarevm/Ubuntu 9.10 server.vmx'
+#     DEVVM='/Users/nilcolor/.../Ubuntu 9.10 server.vmx'
 #     if [ -z "$1" ]; then
 #         vmrun list
 #         return 0
