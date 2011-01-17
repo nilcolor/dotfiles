@@ -26,6 +26,7 @@ set smartindent
 
 " set the size of a tab to 4 space"{{{
 set tabstop=4
+set softtabstop=4
 " set the size of an indent
 set shiftwidth=4
 set expandtab
