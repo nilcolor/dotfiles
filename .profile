@@ -1,3 +1,6 @@
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
 if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
 fi
@@ -135,3 +138,9 @@ alias hgst='vcst hg'
 echo "${BLUE}================== SCREEN STATUS ==================================${RESET_CLR}"
 screen -ls
 echo "${BLUE}===================================================================${RESET_CLR}"
+
+#if there is a local .profile - include it
+if [ -f "$HOME/.profile-local" ]; then
+    . "$HOME/.profile-local"
+fi
+
