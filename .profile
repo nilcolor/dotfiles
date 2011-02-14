@@ -35,8 +35,9 @@ RESET_CLR=$'\e[0m'
 # PS1='\[\n${PINK}\u ${D}at ${ORANGE}\h ${D}in ${GREEN}\w$(hg_ps1) ${RESET_CLR}\n\]$ '
 ### prompt using `vcprompt` commend ###
 export VCPROMPT_FORMAT="[%n:%b%m]"
-PS1='${PINK}\u\e[30;1m@${RESET_CLR}${ORANGE}\h${D}:${BLUE}\w${RED}$(vcprompt)${RESET_CLR}\$ '
-PS2='${GREEN}>${RESET_CLR}'
+#PS1='${PINK}\u\e[30;1m@${RESET_CLR}${ORANGE}\h${D}:${BLUE}\w${RED}$(vcprompt)${RESET_CLR}\$ '
+PS1="${BLUE}\$(date +%H%M)|${PINK}\u\e[30;1m@${RESET_CLR}${ORANGE}\h${D}:${BLUE}\W${RED}\$(vcprompt)${RESET_CLR}\$ "
+PS2="${GREEN}>${RESET_CLR} "
 ### try to set window title. doesn't work with Terminal.app tabs...
 PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}\007"'
 
@@ -79,7 +80,7 @@ alias tl="task ls"
 
 # Git aliases
 alias gst="git status"
-alias gci="git commit" #i'd like to use vim. or i can add -m "..." manually
+alias gc="git commit" #i'd like to use vim. or i can add -m "..." manually
 
 # Mercurial stuff
 hgtarget() {
