@@ -16,14 +16,14 @@ export HGEDITOR='/Users/nilcolor/hgeditor.sh'
 
 #PS1="[\u@\h] \[\033[0;37m\]\W\$\[\033[0m\] "
 # set some color shortcuts
-D=$'\e[37m'
-GREEN=$'\e[32m'
-PINK=$'\e[35m'
-MAGENTA=$'\e[36m'
-BLUE=$'\e[34m'
-ORANGE=$'\e[33m'
-RED=$'\e[31m'
-RESET_CLR=$'\e[0m'
+D="\[\033[37;1m\]"
+GREEN="\[\033[32;1m\]"
+PINK="\[\033[35;1m\]"
+MAGENTA="\[\033[36;1m\]"
+BLUE="\[\033[34;1m\]"
+ORANGE="\[\033[33;1m\]"
+RED="\[\033[31;1m\]"
+RESET_CLR="\[\033[0m\]"
 
 
 #PS1="${BLUE}λ${RESET_CLR} "
@@ -36,8 +36,9 @@ RESET_CLR=$'\e[0m'
 ### prompt using `vcprompt` commend ###
 export VCPROMPT_FORMAT="[%n:%b%m]"
 #PS1='${PINK}\u\e[30;1m@${RESET_CLR}${ORANGE}\h${D}:${BLUE}\w${RED}$(vcprompt)${RESET_CLR}\$ '
-PS1="${BLUE}\$(date +%H%M)|${PINK}\u\e[30;1m@${RESET_CLR}${ORANGE}\h${D}:${BLUE}\W${RED}\$(vcprompt)${RESET_CLR}\$ "
-PS2="${GREEN}>${RESET_CLR} "
+PS1="\[\e[34m\]\$(date +%H%M)|\[\e[35m\]\u\[\e[30;1m\]@\[\e[33m\]\h\[\e[37m\]:\[\e[34m\]\W\[\033[31m\]\$(vcprompt)\[\e[0m\]\$ "
+#PS1="\[\e[34;1m\]\$(date +%H%M)|\[\e[35;1m\]\u  \[\e[0m\]"
+#PS2="${GREEN}>${RESET_CLR} "
 ### try to set window title. doesn't work with Terminal.app tabs...
 PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}\007"'
 
@@ -70,9 +71,13 @@ alias l="ls -l"
 alias ll="ls -al"
 alias ls="ls -apFGlh"
 alias m="mate"
-# alias ..='cd ..'
+#alias cd..='cd ..'
 alias h="history"
 alias bar='echo -e "\033[1;37;44m================================================================================\033[0m"'
+alias colors='echo -e "\033[0m
+\033[30m30    \033[31m31    \033[32m32    \033[33m33    \033[34m34    \033[35m35    \033[36m36    \033[37m37    \033[0m
+\033[30;1m30;1m \033[31;1m31;1m \033[32;1m32;1m \033[33;1m33;1m \033[34;1m34;1m \033[35;1m35;1m \033[36;1m36;1m \033[37;1m37;1m \033[0m
+"'
 ### task aliases ###
 alias t="task"
 alias t+="task add"
@@ -136,9 +141,9 @@ alias hgst='vcst hg'
 # alias devrun="vr start nogui"
 # alias devstop="vr stop soft"
 
-echo "${BLUE}================== SCREEN STATUS ==================================${RESET_CLR}"
+echo "================== SCREEN STATUS =================================="
 screen -ls
-echo "${BLUE}===================================================================${RESET_CLR}"
+echo "==================================================================="
 
 #if there is a local .profile - include it
 if [ -f "$HOME/.profile-local" ]; then
