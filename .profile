@@ -1,5 +1,11 @@
+# -*-Shell-script-*-
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
+
+if [ -n $EMACS ]; then
+    #export PATH=$PATH:/usr/local/bin:/usr/local/git/bin:/usr/X12/bin
+    export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/git/bin:$PATH:/usr/X12/bin
+fi
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
@@ -40,7 +46,9 @@ PS1="\[\e[34m\]\$(date +%H%M)|\[\e[35m\]\u\[\e[30;1m\]@\[\e[33m\]\h\[\e[37m\]:\[
 #PS1="\[\e[34;1m\]\$(date +%H%M)|\[\e[35;1m\]\u  \[\e[0m\]"
 #PS2="${GREEN}>${RESET_CLR} "
 ### try to set window title. doesn't work with Terminal.app tabs...
-PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}\007"'
+if [ -z $EMACS ]; then
+    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}\007"'
+fi
 
 ### some Java/Maven
 # export M2_HOME=/usr/local/apache-maven/apache-maven-2.1.0
@@ -100,7 +108,7 @@ hgtarget() {
 
 # look for lists of files in piped output, sort the unique set of them and print them one per line
 lf() {
-    egrep "^files:" | awk '{for (i=2; i<=NF; i++) print $i}' | sort | uniq 
+    egrep "^files:" | awk '{for (i=2; i<=NF; i++) print $i}' | sort | uniq
 }
 
 vcst() {
@@ -141,12 +149,11 @@ alias hgst='vcst hg'
 # alias devrun="vr start nogui"
 # alias devstop="vr stop soft"
 
-echo "================== SCREEN STATUS =================================="
-screen -ls
-echo "==================================================================="
+#echo "================== SCREEN STATUS =================================="
+#screen -ls
+#echo "==================================================================="
 
 #if there is a local .profile - include it
 if [ -f "$HOME/.profile-local" ]; then
     . "$HOME/.profile-local"
 fi
-
