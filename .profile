@@ -11,13 +11,17 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
 fi
 
+export PYTHONPATH=/Library/Python/2.7/site-packages:/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python:$PYTHONPATH
+export NODE_PATH=/usr/local/lib/node_module
+
 #export HISTCONTROL=ignoreboth
 export HISTCONTROL=erasedups
 export HISTSIZE=10000
 HISTIGNORE="clear:bg:fg:bar:h:history"
 shopt -s histappend
 
-export EDITOR=vim
+# export EDITOR=vim
+export EDITOR="subl -w" # let's give it a try...
 export HGEDITOR='/Users/nilcolor/hgeditor.sh'
 
 #PS1="[\u@\h] \[\033[0;37m\]\W\$\[\033[0m\] "
@@ -30,7 +34,6 @@ BLUE="\[\033[34;1m\]"
 ORANGE="\[\033[33;1m\]"
 RED="\[\033[31;1m\]"
 RESET_CLR="\[\033[0m\]"
-
 
 #PS1="${BLUE}λ${RESET_CLR} "
 #PS2="${MAGENTA}>${RESET_CLR} "
@@ -92,7 +95,7 @@ alias t+="task add"
 alias tl="task ls"
 
 # Git aliases
-alias gst="git status"
+alias gs="git status -sb"
 alias gc="git commit" #i'd like to use vim. or i can add -m "..." manually
 
 # Mercurial stuff
@@ -127,6 +130,8 @@ alias og="hg outgoing -v | lf"
 alias svnst='vcst svn'
 alias hgst='vcst hg'
 
+alias count_files='ls -aRF | wc -l'
+
 -orig() {
     if [ -n "$1" ]; then
         echo 'removing all *.orig files down a tree...'
@@ -148,6 +153,8 @@ alias hgst='vcst hg'
 # }
 # alias devrun="vr start nogui"
 # alias devstop="vr stop soft"
+
+[[ -s "/Users/nilcolor/.rvm/scripts/rvm" ]] && source "/Users/nilcolor/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 #echo "================== SCREEN STATUS =================================="
 #screen -ls
