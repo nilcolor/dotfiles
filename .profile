@@ -97,6 +97,8 @@ alias tl="task ls"
 # Git aliases
 alias gs="git status -sb"
 alias gc="git commit" #i'd like to use vim. or i can add -m "..." manually
+alias gca="git commit -a"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 
 # Mercurial stuff
 hgtarget() {
