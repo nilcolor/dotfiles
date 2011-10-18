@@ -99,6 +99,7 @@ alias gs="git status -sb"
 alias gc="git commit" #i'd like to use vim. or i can add -m "..." manually
 alias gca="git commit -a"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias grm="git status | grep deleted | awk '{print $3}' | xargs git rm"
 
 # Mercurial stuff
 hgtarget() {
@@ -158,6 +159,7 @@ alias count_files='ls -aRF | wc -l'
 
 [[ -s "/Users/nilcolor/.rvm/scripts/rvm" ]] && source "/Users/nilcolor/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
+[[ -s "/usr/local/bin/virtualenvwrapper.sh" ]] && . "/usr/local/bin/virtualenvwrapper.sh" # should load virtualenv wrapper aliases/functions
 #echo "================== SCREEN STATUS =================================="
 #screen -ls
 #echo "==================================================================="
