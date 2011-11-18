@@ -1,3 +1,10 @@
+" GUI options{{{
+if has("gui_running")
+    " remove MacVim toolbar (-=T)
+    set guioptions-=T
+endif
+"}}}
+
 " Wrap too long lines
 set wrap
 
