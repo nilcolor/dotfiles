@@ -11,6 +11,11 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
 fi
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
 export PYTHONPATH=/Library/Python/2.7/site-packages:/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python:$PYTHONPATH
 export NODE_PATH=/usr/local/lib/node_module
 
@@ -21,6 +26,7 @@ HISTIGNORE="clear:bg:fg:bar:h:history"
 shopt -s histappend
 
 # export EDITOR=vim
+# export EDITOR="mate -w"
 export EDITOR="subl -w" # let's give it a try...
 export HGEDITOR='/Users/nilcolor/hgeditor.sh'
 
