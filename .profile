@@ -26,8 +26,8 @@ HISTIGNORE="clear:bg:fg:bar:h:history"
 shopt -s histappend
 
 # export EDITOR=vim
-# export EDITOR="mate -w"
-export EDITOR="subl -w" # let's give it a try...
+export EDITOR="/usr/local/bin/mate -w"
+# export EDITOR="subl -w" # let's give it a try...
 export HGEDITOR='/Users/nilcolor/hgeditor.sh'
 
 #PS1="[\u@\h] \[\033[0;37m\]\W\$\[\033[0m\] "
@@ -106,6 +106,9 @@ alias gc="git commit" #i'd like to use vim. or i can add -m "..." manually
 alias gca="git commit -a"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias grm="git status | grep deleted | awk '{print $3}' | xargs git rm"
+alias gic="git fetch && git log ..@{u}"
+
+alias rot13='tr a-zA-Z n-za-mN-ZA-M'
 
 # Mercurial stuff
 hgtarget() {
@@ -163,9 +166,10 @@ alias count_files='ls -aRF | wc -l'
 # alias devrun="vr start nogui"
 # alias devstop="vr stop soft"
 
-[[ -s "/Users/nilcolor/.rvm/scripts/rvm" ]] && source "/Users/nilcolor/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-
 [[ -s "/usr/local/bin/virtualenvwrapper.sh" ]] && . "/usr/local/bin/virtualenvwrapper.sh" # should load virtualenv wrapper aliases/functions
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
 #echo "================== SCREEN STATUS =================================="
 #screen -ls
 #echo "==================================================================="
